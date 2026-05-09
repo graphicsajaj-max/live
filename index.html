@@ -3,44 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HYPE MOMENT PRO | LIVE</title>
+    <title>HYPE MOMENT PRO | OFFICIAL STREAM</title>
     <style>
+        :root {
+            --main-red: #ff0000;
+            --gold: linear-gradient(90deg, #ffd700, #ff8c00);
+            --tg-blue: #0088cc;
+            --bg-dark: #0a0a0a;
+        }
+
         body {
-            background-color: #000;
-            color: #fff;
-            font-family: 'Arial', sans-serif;
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
         }
 
+        /* Анимированная шапка */
         header {
-            background: linear-gradient(to bottom, #ff0000, #000);
-            padding: 20px;
-            font-size: 32px;
-            font-weight: bold;
-            text-transform: uppercase;
+            width: 100%;
+            background: linear-gradient(180deg, var(--main-red) 0%, #000 100%);
+            padding: 25px 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(255, 0, 0, 0.4);
+            border-bottom: 2px solid #333;
+        }
+
+        .logo {
+            font-size: clamp(24px, 8vw, 36px);
+            font-weight: 900;
             letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
         }
 
-        .main-container {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 10px;
+        /* Главная кнопка YouTube */
+        .btn-youtube {
+            display: block;
+            width: 90%;
+            max-width: 550px;
+            background: var(--main-red);
+            color: white;
+            text-decoration: none;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            border: 2px solid #fff;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
+            animation: pulse 2s infinite;
+            transition: 0.3s;
         }
 
-        /* Контейнер для плеера */
-        .video-wrapper {
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); }
+            50% { transform: scale(1.03); box-shadow: 0 0 30px rgba(255, 0, 0, 0.7); }
+            100% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); }
+        }
+
+        /* Контейнер для плеера Kick */
+        .player-section {
+            width: 95%;
+            max-width: 900px;
+            margin: 10px auto;
+        }
+
+        .video-box {
             position: relative;
-            padding-bottom: 56.25%; /* Соотношение сторон 16:9 */
+            padding-bottom: 56.25%; /* 16:9 */
             height: 0;
+            background: #000;
+            border-radius: 15px;
             overflow: hidden;
-            border: 3px solid #333;
-            border-radius: 10px;
-            background: #111;
+            border: 3px solid #222;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.9);
         }
 
-        .video-wrapper iframe {
+        .video-box iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -48,27 +94,30 @@
             height: 100%;
         }
 
+        /* Инфо-панель под видео */
         .status-bar {
-            background: #1a1a1a;
-            padding: 15px;
-            margin-top: 10px;
-            border-radius: 5px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 12px 20px;
+            background: #151515;
+            margin-top: 10px;
+            border-radius: 8px;
+            border-left: 5px solid var(--main-red);
         }
 
-        .live-indicator {
-            color: #ff0000;
+        .live-tag {
+            color: var(--main-red);
             font-weight: bold;
+            font-size: 14px;
             display: flex;
             align-items: center;
         }
 
-        .live-dot {
+        .dot {
             height: 10px;
             width: 10px;
-            background-color: #ff0000;
+            background-color: var(--main-red);
             border-radius: 50%;
             display: inline-block;
             margin-right: 8px;
@@ -76,53 +125,80 @@
         }
 
         @keyframes blink {
-            0% { opacity: 1; }
-            50% { opacity: 0.3; }
-            100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
-        .specs {
-            color: #888;
-            font-size: 14px;
-            text-transform: uppercase;
-        }
-
-        .btn-telegram {
-            display: inline-block;
-            background: #0088cc;
-            color: #fff;
-            padding: 15px 30px;
-            margin-top: 25px;
-            text-decoration: none;
-            border-radius: 50px;
+        .gpu-tag {
+            color: #00ff00;
             font-weight: bold;
-            transition: 0.3s;
+            font-size: 12px;
+            letter-spacing: 1px;
         }
 
-        .btn-telegram:hover {
-            background: #00aaff;
-            transform: scale(1.05);
+        /* Кнопки действий */
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 90%;
+            max-width: 550px;
+            margin: 30px auto;
+        }
+
+        .btn-action {
+            padding: 20px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 22px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn-donate {
+            background: var(--gold);
+            color: #000;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-tg {
+            background: var(--tg-blue);
+            color: white;
+            font-size: 18px;
+        }
+
+        .btn-action:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.1);
         }
 
         footer {
-            margin-top: 50px;
-            padding: 20px;
+            margin: 40px 0;
             color: #444;
             font-size: 12px;
+            text-transform: uppercase;
             letter-spacing: 2px;
         }
+
     </style>
 </head>
 <body>
 
     <header>
-        🔥 HYPE MOMENT PRO 🔥
+        <div class="logo">🔥 HYPE MOMENT PRO 🔥</div>
     </header>
 
-    <div class="main-container">
-        <div class="video-wrapper">
+    <a href="https://www.youtube.com/@HYPEMOMENTPRO?sub_confirmation=1" class="btn-youtube" target="_blank">
+        🎬 ПОДПИСАТЬСЯ НА YOUTUBE
+    </a>
+
+    <div class="player-section">
+        <div class="video-box">
             <iframe
-                src="https://player.kick.com/hypemoment_pro"
+                src="https://player.kick.com/hypemoment-pro?origin=graphicsajaj-max.github.io"
                 frameborder="0"
                 scrolling="no"
                 allowfullscreen="true">
@@ -130,21 +206,25 @@
         </div>
 
         <div class="status-bar">
-            <div class="live-indicator">
-                <span class="live-dot"></span> ПРЯМОЙ ЭФИР: ТЕСТ СИСТЕМЫ
+            <div class="live-tag">
+                <span class="dot"></span> ПРЯМОЙ ЭФИР
             </div>
-            <div class="specs">
-                RTX 4060 POWERED
-            </div>
+            <div class="gpu-tag">POWERED BY RTX 4060</div>
         </div>
+    </div>
 
-        <a href="https://t.me/твой_канал" class="btn-telegram">
-            ПОДПИСАТЬСЯ В TELEGRAM
+    <div class="buttons-container">
+        <a href="https://www.donationalerts.com/r/tim04745774" class="btn-action btn-donate" target="_blank">
+            💰 ПОДДЕРЖАТЬ (ДОНАТ) 💰
+        </a>
+
+        <a href="https://t.me/hypemoment_pro" class="btn-action btn-tg" target="_blank">
+            ✈️ НАШ TELEGRAM КАНАЛ
         </a>
     </div>
 
     <footer>
-        OFFICIAL STREAM PLATFORM BY MEDET
+        © 2026 HYPE MOMENT PRO | BY MEDET
     </footer>
 
 </body>
