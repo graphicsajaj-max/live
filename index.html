@@ -3,28 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HYPE MOMENT PRO | Прямой Эфир</title>
+    <title>HYPE MOMENT PRO | LIVE</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
         body { background: #050505; color: white; font-family: 'Oswald', sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; overflow-x: hidden; }
-        .header { background: linear-gradient(90deg, #1a1a1a, #e02020, #1a1a1a); width: 100%; padding: 20px 0; text-align: center; box-shadow: 0 4px 20px rgba(224, 32, 32, 0.5); }
-        .header h1 { margin: 0; font-size: 35px; text-transform: uppercase; letter-spacing: 5px; }
+        .header { background: linear-gradient(90deg, #1a1a1a, #e02020, #1a1a1a); width: 100%; padding: 20px 0; text-align: center; box-shadow: 0 4px 20px rgba(224, 32, 32, 0.5); z-index: 10; }
+        .header h1 { margin: 0; font-size: clamp(20px, 5vw, 35px); text-transform: uppercase; letter-spacing: 5px; }
         .video-container { width: 95%; max-width: 1100px; margin: 40px auto; border: 3px solid #1a1a1a; border-radius: 15px; overflow: hidden; background: #000; box-shadow: 0 0 50px rgba(0,0,0,1); position: relative; padding-top: 56.25%; }
         iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
         .status-bar { width: 95%; max-width: 1100px; display: flex; justify-content: space-between; padding: 15px; background: #111; border-radius: 0 0 10px 10px; margin-top: -40px; border: 1px solid #222; box-sizing: border-box; }
-        .live-dot { color: #e02020; display: flex; align-items: center; gap: 8px; text-transform: uppercase; }
+        .live-dot { color: #e02020; display: flex; align-items: center; gap: 8px; text-transform: uppercase; font-size: 14px; }
         .dot { height: 12px; width: 12px; background: #e02020; border-radius: 50%; animation: pulse 1.5s infinite; }
         @keyframes pulse { 0% { transform: scale(0.9); opacity: 1; } 70% { transform: scale(1.5); opacity: 0; } 100% { transform: scale(0.9); opacity: 0; } }
+        .footer-info { margin-top: 20px; color: #444; font-size: 12px; letter-spacing: 2px; }
     </style>
 </head>
 <body>
     <div class="header"><h1>🔥 HYPE MOMENT PRO 🔥</h1></div>
     <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/SggF-GWOREU?autoplay=1" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/LUjFd6Q7pG0?autoplay=1" allowfullscreen></iframe>
     </div>
     <div class="status-bar">
-        <div class="live-dot"><span class="dot"></span> ТЕСТОВЫЙ РЕЖИМ: ГАЙ vs ПЕЙН</div>
-        <div style="color: #666;">RTX 4060 POWERED</div>
+        <div class="live-dot"><span class="dot"></span> ПРЯМОЙ ЭФИР: ТЕСТ СИСТЕМЫ</div>
+        <div style="color: #666; font-size: 12px;">RTX 4060 POWERED</div>
     </div>
+    <div class="footer-info">OFFICIAL STREAM PLATFORM BY MEDET</div>
 </body>
 </html>
