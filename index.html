@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HYPE MOMENT PRO | LIVE</title>
+    <title>HYPE MOMENT PRO | OFFICIAL</title>
     <style>
         :root {
             --red: #ff0000;
             --gold: #ffd700;
-            --bg: #0a0a0a;
-            --panel: #1a1a1a;
+            --bg: #050505;
+            --panel: #121212;
         }
 
         body { 
@@ -22,63 +22,48 @@
             align-items: center; 
         }
 
-        /* ЗОЛОТОЙ РЕКЛАМНЫЙ БАННЕР */
-        .ad-banner {
+        /* ВЕРХНЯЯ ПАНЕЛЬ СВЯЗИ */
+        .admin-contact {
             width: 100%;
-            background: linear-gradient(90deg, #000, #333, #000);
-            border-bottom: 2px solid var(--gold);
+            background: linear-gradient(90deg, #000, #222, #000);
+            border-bottom: 1px solid var(--gold);
             padding: 12px 0;
-            color: var(--gold);
-            font-weight: bold;
             text-align: center;
-            font-size: 16px;
-            text-transform: uppercase;
+            font-size: 14px;
+            color: var(--gold);
+            letter-spacing: 1px;
+            font-weight: bold;
         }
 
         header { 
             width: 100%; 
             background: linear-gradient(180deg, var(--red) 0%, #000 100%); 
-            padding: 20px 0; 
+            padding: 15px 0; 
             text-align: center; 
             box-shadow: 0 4px 15px rgba(255,0,0,0.3);
         }
 
-        .btn-yt {
-            display: block;
-            width: 90%;
-            max-width: 500px;
-            background: var(--red);
-            color: #fff;
-            text-decoration: none;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 10px;
-            font-weight: bold;
-            border: 2px solid #fff;
-            text-align: center;
-        }
-
-        /* КОНТЕЙНЕР ЭФИРА И ЧАТА (КАК НА YOUTUBE) */
-        .main-content {
-            width: 95%;
-            max-width: 1100px;
+        /* ОСНОВНОЙ ПЛАН: ВИДЕО + КНОПКИ */
+        .main-layout {
+            width: 98%;
+            max-width: 1200px;
             display: grid;
-            grid-template-columns: 1fr 350px; /* Видео слева, чат справа */
+            grid-template-columns: 1fr 320px;
             gap: 15px;
-            margin-top: 10px;
+            margin: 20px 0;
         }
 
-        /* Мобильная версия (чат под видео) */
         @media (max-width: 900px) {
-            .main-content { grid-template-columns: 1fr; }
+            .main-layout { grid-template-columns: 1fr; }
         }
 
-        .video-section { width: 100%; }
+        .video-wrapper { width: 100%; }
 
         .video-box {
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
+            background: #000;
             border-radius: 12px;
             overflow: hidden;
             border: 2px solid #222;
@@ -86,97 +71,90 @@
 
         .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        /* СВОБОДНЫЙ ЧАТ БЕЗ РЕГИСТРАЦИИ */
-        .free-chat {
+        /* ПАНЕЛЬ КНОПОК СПРАВА */
+        .side-panel {
             background: var(--panel);
             border-radius: 12px;
-            border: 2px solid #333;
-            height: 500px;
+            border: 1px solid #333;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            gap: 12px;
+            justify-content: center;
         }
 
-        .chat-header {
-            background: #222;
-            padding: 10px;
-            font-weight: bold;
-            font-size: 14px;
-            border-bottom: 1px solid #444;
+        .panel-title {
             color: var(--gold);
             text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
         }
 
-        .status-bar {
+        .btn {
+            padding: 18px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 900;
+            text-align: center;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 15px;
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .btn:hover { transform: scale(1.02); filter: brightness(1.2); }
+
+        .btn-donate { background: linear-gradient(90deg, #ffd700, #ff8c00); color: #000; }
+        .btn-inst { background: linear-gradient(45deg, #f09433, #bc1888); }
+        .btn-tg { background: #0088cc; }
+        .btn-yt { background: var(--red); }
+
+        .status-info {
             display: flex;
             justify-content: space-between;
             padding: 10px;
             background: #111;
             font-size: 12px;
-            margin-top: 5px;
-            border-radius: 5px;
+            margin-top: 8px;
+            border-radius: 6px;
+            border-left: 4px solid var(--red);
         }
 
-        .action-buttons {
-            width: 90%;
-            max-width: 500px;
-            margin: 25px 0;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .btn-action {
-            padding: 15px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            text-align: center;
-            color: #fff;
-        }
-
-        .btn-donate { background: linear-gradient(90deg, #ffd700, #ff8c00); color: #000; }
-        .btn-inst { background: linear-gradient(45deg, #f09433, #bc1888); }
-        .btn-tg { background: #0088cc; }
-
-        footer { margin: 40px; color: #444; font-size: 10px; }
+        footer { padding: 30px; color: #444; font-size: 11px; letter-spacing: 2px; }
     </style>
 </head>
 <body>
 
-    <div class="ad-banner">
-        🔥 РЕКЛАМА: @hypemoment_pro — ЛУЧШИЙ ИНСТАГРАМ! 🔥
+    <div class="admin-contact">
+        СВЯЗЬ / CONTACT ADMIN: <span style="color: #fff;">@hypemoment_pro</span>
     </div>
 
     <header>
-        <div style="font-size: 28px; font-weight: 900; letter-spacing: 2px;">HYPE MOMENT PRO</div>
+        <div style="font-size: 26px; font-weight: 900; letter-spacing: 3px;">HYPE MOMENT PRO</div>
     </header>
 
-    <a href="https://www.youtube.com/@HYPEMOMENTPRO?sub_confirmation=1" class="btn-yt" target="_blank">
-        SUBSCRIBE ON YOUTUBE
-    </a>
-
-    <div class="main-content">
-        <div class="video-section">
+    <div class="main-layout">
+        <div class="video-wrapper">
             <div class="video-box">
                 <iframe src="https://player.kick.com/hypemoment-pro?origin=graphicsajaj-max.github.io" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
             </div>
-            <div class="status-bar">
-                <div style="color:red">● LIVE / ПРЯМОЙ ЭФИР</div>
-                <div style="color:#00ff00">RTX 4060 POWERED</div>
+            <div class="status-info">
+                <div style="color:red; font-weight: bold;">● LIVE / В ЭФИРЕ</div>
+                <div style="color:#00ff00; font-weight: bold;">RTX 4060 POWERED</div>
             </div>
         </div>
 
-        <div class="free-chat">
-            <div class="chat-header">СВОБОДНЫЙ ЧАТ / LIVE CHAT</div>
-            <iframe src="https://www3.cbox.ws/box/?boxid=3534575&boxtag=v8p7p7" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>
+        <div class="side-panel">
+            <div class="panel-title">Поддержать и Подписаться</div>
+            
+            <a href="https://www.donationalerts.com/r/tim04745774" class="btn btn-donate" target="_blank">💰 ДОНАТ / DONATE</a>
+            <a href="https://t.me/hypemoment_pro" class="btn btn-tg" target="_blank">✈️ TELEGRAM</a>
+            <a href="https://www.instagram.com/hypemoment_pro?igsh=MTZxY281ZWg2eGx2ZA==" class="btn btn-inst" target="_blank">📸 INSTAGRAM</a>
+            <a href="https://www.youtube.com/@HYPEMOMENTPRO?sub_confirmation=1" class="btn btn-yt" target="_blank">🎬 YOUTUBE</a>
         </div>
-    </div>
-
-    <div class="action-buttons">
-        <a href="https://www.donationalerts.com/r/tim04745774" class="btn-action btn-donate" target="_blank">DONATE / ПОДДЕРЖАТЬ</a>
-        <a href="https://www.instagram.com/hypemoment_pro" class="btn-action btn-inst" target="_blank">INSTAGRAM</a>
-        <a href="https://t.me/hypemoment_pro" class="btn-action btn-tg" target="_blank">TELEGRAM</a>
     </div>
 
     <footer>OFFICIAL PLATFORM BY MEDET | © 2026</footer>
