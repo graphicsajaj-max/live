@@ -5,28 +5,147 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HYPE MOMENT PRO | LIVE</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
-        body { background: #050505; color: white; font-family: 'Oswald', sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; overflow-x: hidden; }
-        .header { background: linear-gradient(90deg, #1a1a1a, #e02020, #1a1a1a); width: 100%; padding: 20px 0; text-align: center; box-shadow: 0 4px 20px rgba(224, 32, 32, 0.5); z-index: 10; }
-        .header h1 { margin: 0; font-size: clamp(20px, 5vw, 35px); text-transform: uppercase; letter-spacing: 5px; }
-        .video-container { width: 95%; max-width: 1100px; margin: 40px auto; border: 3px solid #1a1a1a; border-radius: 15px; overflow: hidden; background: #000; box-shadow: 0 0 50px rgba(0,0,0,1); position: relative; padding-top: 56.25%; }
-        iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-        .status-bar { width: 95%; max-width: 1100px; display: flex; justify-content: space-between; padding: 15px; background: #111; border-radius: 0 0 10px 10px; margin-top: -40px; border: 1px solid #222; box-sizing: border-box; }
-        .live-dot { color: #e02020; display: flex; align-items: center; gap: 8px; text-transform: uppercase; font-size: 14px; }
-        .dot { height: 12px; width: 12px; background: #e02020; border-radius: 50%; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { transform: scale(0.9); opacity: 1; } 70% { transform: scale(1.5); opacity: 0; } 100% { transform: scale(0.9); opacity: 0; } }
-        .footer-info { margin-top: 20px; color: #444; font-size: 12px; letter-spacing: 2px; }
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background: linear-gradient(to bottom, #ff0000, #000);
+            padding: 20px;
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        .main-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 10px;
+        }
+
+        /* Контейнер для плеера */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Соотношение сторон 16:9 */
+            height: 0;
+            overflow: hidden;
+            border: 3px solid #333;
+            border-radius: 10px;
+            background: #111;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .status-bar {
+            background: #1a1a1a;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .live-indicator {
+            color: #ff0000;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .live-dot {
+            height: 10px;
+            width: 10px;
+            background-color: #ff0000;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        .specs {
+            color: #888;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .btn-telegram {
+            display: inline-block;
+            background: #0088cc;
+            color: #fff;
+            padding: 15px 30px;
+            margin-top: 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-telegram:hover {
+            background: #00aaff;
+            transform: scale(1.05);
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            color: #444;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
     </style>
 </head>
 <body>
-    <div class="header"><h1>🔥 HYPE MOMENT PRO 🔥</h1></div>
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/LUjFd6Q7pG0?autoplay=1" allowfullscreen></iframe>
+
+    <header>
+        🔥 HYPE MOMENT PRO 🔥
+    </header>
+
+    <div class="main-container">
+        <div class="video-wrapper">
+            <iframe
+                src="https://player.kick.com/hypemoment_pro"
+                frameborder="0"
+                scrolling="no"
+                allowfullscreen="true">
+            </iframe>
+        </div>
+
+        <div class="status-bar">
+            <div class="live-indicator">
+                <span class="live-dot"></span> ПРЯМОЙ ЭФИР: ТЕСТ СИСТЕМЫ
+            </div>
+            <div class="specs">
+                RTX 4060 POWERED
+            </div>
+        </div>
+
+        <a href="https://t.me/твой_канал" class="btn-telegram">
+            ПОДПИСАТЬСЯ В TELEGRAM
+        </a>
     </div>
-    <div class="status-bar">
-        <div class="live-dot"><span class="dot"></span> ПРЯМОЙ ЭФИР: ТЕСТ СИСТЕМЫ</div>
-        <div style="color: #666; font-size: 12px;">RTX 4060 POWERED</div>
-    </div>
-    <div class="footer-info">OFFICIAL STREAM PLATFORM BY MEDET</div>
+
+    <footer>
+        OFFICIAL STREAM PLATFORM BY MEDET
+    </footer>
+
 </body>
 </html>
