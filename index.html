@@ -3,161 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HYPE MOMENT PRO | OFFICIAL</title>
+    <title>HYPE MOMENT PRO | LIVE</title>
     <style>
-        :root {
-            --red: #ff0000;
-            --gold: #ffd700;
-            --bg: #050505;
-            --panel: #121212;
+        :root { 
+            --red: #ff0000; 
+            --gold: #ffd700; 
+            --bg: #050505; 
+            --panel: #111;
         }
-
-        body { 
+        
+        body, html { 
             background: var(--bg); 
             color: #fff; 
-            font-family: 'Segoe UI', Arial, sans-serif; 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
             margin: 0; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
         }
 
-        /* ВЕРХНЯЯ ПАНЕЛЬ СВЯЗИ */
-        .admin-contact {
-            width: 100%;
-            background: linear-gradient(90deg, #000, #222, #000);
-            border-bottom: 1px solid var(--gold);
-            padding: 12px 0;
-            text-align: center;
-            font-size: 14px;
-            color: var(--gold);
-            letter-spacing: 1px;
-            font-weight: bold;
-        }
-
+        /* ШАПКА */
         header { 
-            width: 100%; 
+            height: 60px;
             background: linear-gradient(180deg, var(--red) 0%, #000 100%); 
-            padding: 15px 0; 
-            text-align: center; 
-            box-shadow: 0 4px 15px rgba(255,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px; 
+            font-weight: 900; 
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #333;
+            z-index: 100;
         }
 
-        /* ОСНОВНОЙ ПЛАН: ВИДЕО + КНОПКИ */
-        .main-layout {
-            width: 98%;
-            max-width: 1200px;
-            display: grid;
-            grid-template-columns: 1fr 320px;
-            gap: 15px;
-            margin: 20px 0;
+        /* ГЛАВНЫЙ КОНТЕЙНЕР (ВИДЕО + ЧАТ) */
+        .main-container {
+            display: flex;
+            height: calc(100vh - 60px);
+            width: 100%;
         }
 
-        @media (max-width: 900px) {
-            .main-layout { grid-template-columns: 1fr; }
+        /* ЛЕВАЯ ЧАСТЬ: ВИДЕО И КНОПКИ */
+        .content-side {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            overflow-y: auto;
         }
 
-        .video-wrapper { width: 100%; }
-
-        .video-box {
+        .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 */
             background: #000;
             border-radius: 12px;
             overflow: hidden;
             border: 2px solid #222;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
-        .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
 
-        /* ПАНЕЛЬ КНОПОК СПРАВА */
-        .side-panel {
+        /* ПРАВАЯ ЧАСТЬ: ЧАТ */
+        .chat-side {
+            flex: 1;
+            min-width: 350px;
             background: var(--panel);
-            border-radius: 12px;
-            border: 1px solid #333;
-            padding: 20px;
-            display: flex;
+            border-left: 1px solid #333;
+            display: flex; /* Чат открыт по умолчанию на ПК */
             flex-direction: column;
-            gap: 12px;
-            justify-content: center;
+            transition: 0.3s;
         }
 
-        .panel-title {
-            color: var(--gold);
-            text-align: center;
-            font-size: 14px;
+        .chat-header {
+            padding: 15px;
+            background: #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             font-weight: bold;
-            margin-bottom: 10px;
-            text-transform: uppercase;
+            border-bottom: 1px solid #333;
+        }
+
+        .chat-iframe {
+            flex: 1;
+            border: none;
+            width: 100%;
+        }
+
+        /* КНОПКИ УПРАВЛЕНИЯ */
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+            padding-bottom: 20px;
         }
 
         .btn {
-            padding: 18px;
-            border-radius: 10px;
+            padding: 14px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 900;
             text-align: center;
             color: #fff;
             text-transform: uppercase;
-            font-size: 15px;
-            transition: 0.3s;
-            border: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
         }
 
-        .btn:hover { transform: scale(1.02); filter: brightness(1.2); }
+        .btn:hover { opacity: 0.8; transform: translateY(-2px); }
 
+        .btn-chat { background: var(--gold); color: #000; }
         .btn-donate { background: linear-gradient(90deg, #ffd700, #ff8c00); color: #000; }
-        .btn-inst { background: linear-gradient(45deg, #f09433, #bc1888); }
         .btn-tg { background: #0088cc; }
+        .btn-inst { background: linear-gradient(45deg, #f09433, #bc1888); }
         .btn-yt { background: var(--red); }
 
-        .status-info {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-            background: #111;
-            font-size: 12px;
-            margin-top: 8px;
-            border-radius: 6px;
-            border-left: 4px solid var(--red);
+        /* ВСПЛЫВАЮЩИЙ БАННЕР */
+        #reminder {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 215, 0, 0.95);
+            color: #000;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 900;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 0 30px var(--gold);
+            animation: fadeIn 0.5s;
         }
 
-        footer { padding: 30px; color: #444; font-size: 11px; letter-spacing: 2px; }
+        @keyframes fadeIn { from { opacity: 0; transform: translate(-50%, -20px); } to { opacity: 1; transform: translate(-50%, 0); } }
+
+        /* МОБИЛЬНАЯ АДАПТАЦИЯ */
+        @media (max-width: 900px) {
+            body { overflow-y: auto; height: auto; }
+            .main-container { flex-direction: column; height: auto; }
+            .chat-side { width: 100%; height: 450px; display: none; } /* Скрыт на мобилках по умолчанию */
+            .content-side { flex: none; height: auto; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="admin-contact">
-        СВЯЗЬ / CONTACT ADMIN: <span style="color: #fff;">@hypemoment_pro</span>
-    </div>
+    <header>MEDET KRASAVCHIK • HYPE MOMENT PRO</header>
 
-    <header>
-        <div style="font-size: 26px; font-weight: 900; letter-spacing: 3px;">HYPE MOMENT PRO</div>
-    </header>
-
-    <div class="main-layout">
-        <div class="video-wrapper">
-            <div class="video-box">
+    <div class="main-container">
+        
+        <div class="content-side">
+            <div class="video-wrapper">
+                <div id="reminder">🔥 МЕДЕТ В ЭФИРЕ: ПОДПИШИСЬ! 🔥</div>
+                
                 <iframe src="https://player.kick.com/hypemoment-pro?origin=graphicsajaj-max.github.io" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
             </div>
-            <div class="status-info">
-                <div style="color:red; font-weight: bold;">● LIVE / В ЭФИРЕ</div>
-                <div style="color:#00ff00; font-weight: bold;">RTX 4060 POWERED</div>
+
+            <div class="button-grid">
+                <button class="btn btn-chat" onclick="toggleChat()">💬 ЧАТ / CHAT</button>
+                <a href="https://www.donationalerts.com/r/tim04745774" class="btn btn-donate" target="_blank">💰 ДОНАТ</a>
+                <a href="https://t.me/hypemoment_pro" class="btn btn-tg" target="_blank">✈️ TG</a>
+                <a href="https://www.instagram.com/hypemoment_pro" class="btn btn-inst" target="_blank">📸 INST</a>
+                <a href="https://www.youtube.com/@HYPEMOMENTPRO" class="btn btn-yt" target="_blank">🎬 YT</a>
             </div>
         </div>
 
-        <div class="side-panel">
-            <div class="panel-title">Поддержать и Подписаться</div>
+        <div class="chat-side" id="side-chat">
+            <div class="chat-header">
+                <span>ЖИВОЙ ЧАТ 💬</span>
+                <span onclick="toggleChat()" style="cursor:pointer; font-size: 20px;">✕</span>
+            </div>
             
-            <a href="https://www.donationalerts.com/r/tim04745774" class="btn btn-donate" target="_blank">💰 ДОНАТ / DONATE</a>
-            <a href="https://t.me/hypemoment_pro" class="btn btn-tg" target="_blank">✈️ TELEGRAM</a>
-            <a href="https://www.instagram.com/hypemoment_pro?igsh=MTZxY281ZWg2eGx2ZA==" class="btn btn-inst" target="_blank">📸 INSTAGRAM</a>
-            <a href="https://www.youtube.com/@HYPEMOMENTPRO?sub_confirmation=1" class="btn btn-yt" target="_blank">🎬 YOUTUBE</a>
+            <iframe src="https://deadsimplechat.com/ВАШ_ID_ЧАТА" class="chat-frame"></iframe>
         </div>
+
     </div>
 
-    <footer>OFFICIAL PLATFORM BY MEDET | © 2026</footer>
+    <script>
+        // Функция открытия/закрытия чата
+        function toggleChat() {
+            const chat = document.getElementById('side-chat');
+            if (chat.style.display === 'none' || chat.style.display === '') {
+                chat.style.display = 'flex';
+            } else {
+                chat.style.display = 'none';
+            }
+        }
+
+        // Система автоматических напоминаний (каждые 15 минут)
+        function showReminder() {
+            const reminder = document.getElementById('reminder');
+            reminder.style.display = 'block';
+            setTimeout(() => {
+                reminder.style.display = 'none';
+            }, 20000); // Висит 20 секунд
+        }
+
+        // Запуск через 1 минуту после старта, затем каждые 15 минут
+        setTimeout(() => {
+            showReminder();
+            setInterval(showReminder, 900000); 
+        }, 60000);
+    </script>
 
 </body>
 </html>
